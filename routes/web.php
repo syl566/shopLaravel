@@ -5,3 +5,20 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/hello', function () {
+    return 'Hello Laravel!';
+});
+
+use App\Http\Controllers\ProductController;
+
+Route::get('/products/{id}', [ProductController::class, 'show'])
+    ->name('Déscriptif Produits');
+
+use App\Http\Controllers\PageController;
+
+Route::get('/', [PageController::class, 'home'])
+    ->name('Accueil');
+
+Route::get('/about', [PageController::class, 'about'])
+    ->name('A propos');
