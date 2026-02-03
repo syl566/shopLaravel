@@ -2,10 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/hello', function () {
     return 'Hello Laravel!';
 });
@@ -17,12 +13,11 @@ Route::get('/products/{id}', [ProductController::class, 'show'])
 
 use App\Http\Controllers\PageController;
 
-//Route::get('/', [PageController::class, 'home'])
-    //->name('home');
+Route::get('/', [PageController::class, 'home'])
+    ->name('home');
 
 Route::get('/about', [PageController::class, 'about'])
     ->name('about');
 
-Route::get('/', function () {
-    return view('greeting', ['title' => 'Bienvenue']);
-});
+
+

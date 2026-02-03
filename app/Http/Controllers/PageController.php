@@ -6,9 +6,17 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function home()
-    {
-        return 'Bienvenue à la maison!';
+
+    public function home() {
+     $product = [
+        'name' => 'T-shirt Laravel',
+        'price' => 29.99,
+        'description' => 'Un super t-shirt',
+        'stock' => 0
+
+    ];
+     return view('greeting', compact('product'));
+    
     }
 
     public function about()
