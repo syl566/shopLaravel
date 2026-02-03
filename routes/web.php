@@ -13,12 +13,16 @@ Route::get('/hello', function () {
 use App\Http\Controllers\ProductController;
 
 Route::get('/products/{id}', [ProductController::class, 'show'])
-    ->name('Déscriptif Produits');
+    ->name('products.show');
 
 use App\Http\Controllers\PageController;
 
-Route::get('/', [PageController::class, 'home'])
-    ->name('Accueil');
+//Route::get('/', [PageController::class, 'home'])
+    //->name('home');
 
 Route::get('/about', [PageController::class, 'about'])
-    ->name('A propos');
+    ->name('about');
+
+Route::get('/', function () {
+    return view('greeting', ['title' => 'Bienvenue']);
+});
