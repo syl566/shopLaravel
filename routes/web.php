@@ -19,5 +19,8 @@ Route::get('/', [PageController::class, 'home'])
 Route::get('/about', [PageController::class, 'about'])
     ->name('about');
 
+Route::get('/index', [PageController::class, 'index'])
+->name('index');
 
-
+Route::get('/contact', [PageController::class, 'contact'])
+->name('contact');
