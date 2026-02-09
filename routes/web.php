@@ -8,8 +8,12 @@ Route::get('/hello', function () {
 
 use App\Http\Controllers\ProductController;
 
-Route::get('/products/{id}', [ProductController::class, 'show'])
-    ->name('products.show');
+Route::get('/Products/{id}', [ProductController::class, 'show'])
+->name('Products.show');
+
+Route::get('/index', [ProductController::class, 'index'])
+    ->name('index');
+
 
 use App\Http\Controllers\PageController;
 
@@ -19,8 +23,6 @@ Route::get('/', [PageController::class, 'home'])
 Route::get('/about', [PageController::class, 'about'])
     ->name('about');
 
-Route::get('/index', [PageController::class, 'index'])
-->name('index');
-
 Route::get('/contact', [PageController::class, 'contact'])
 ->name('contact');
+
