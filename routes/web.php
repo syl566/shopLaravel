@@ -28,7 +28,7 @@ Route::get('/contact', [PageController::class, 'contact'])
 
 use App\Http\Controllers\ProductsController;
 
-Route::resource('products', ProductsController::class);
+Route::resource('/products', ProductsController::class);
 
 use Illuminate\Http\Request;
 

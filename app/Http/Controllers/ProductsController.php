@@ -13,15 +13,16 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        //
+        $articles = Products::all();
+        return view('products.index', compact('articles'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
      */
     public function create()
     {
+        return view('products.create');
         //
     }
 
@@ -31,7 +32,28 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validation des données
+        $validated = $request->validate([
+            'category_id' => 'required',
+            'name'        => 'required|string|max:255',
+            'slug'        => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'price'       => 'required|numeric|min:0',
+            'stock'       => 'required|integer|min:0',
+            'active'      => 'nullable|boolean',
+        ]);
+        Products::create([
+            'category_id' => $request->category_id,
+            'name' => $validated['name'],
+            'slug' => $validated['slug'],
+            'description' => $validated['description'] ?? null,
+            'price' => $validated['price'],
+            'stock' => $validated['stock'],
+            'active' => $request->has('active'),
+        ]);
+        return redirect()->route('products.index')
+        ->with('success', 'Produit créé avec succès !');
+
     }
 
     /**
@@ -41,7 +63,8 @@ class ProductsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $product = Products::findOrFail($id);
+        return view('Products',['id' => $id, 'articles' => $product]);
     }
 
     /**

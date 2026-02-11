@@ -9,10 +9,10 @@
 </head>
 
 <body class="bg-gray-100">
-    <header class="bg-blue-600 text-white p-4">
+    <header class="bg-blue-600 text-white p-5">
         <nav class="container mx-auto">
             <a href="{{ route('home') }}" class="font-bold text-xl">ShopLaravel</a>
-            <a href="{{ route('index') }}" class="ml-4">Produits</a>
+            <a href="{{ route('products.index') }}" class="ml-4">Produits</a>
             <a href="{{ route('about') }}" class="ml-4">À propos</a>
             <a href="{{ route('contact') }}" class="ml-4">Contact</a>
         </nav>
@@ -26,8 +26,19 @@
     <main class="container mx-auto py-8">
         @yield('content')
     </main>
+    @if(session('success'))
+        <div class="bg-green-100 text-green-800 p-4 rounded mb-4">
+            {{ session('success') }}
+        </div>
+    @endif
 
-    <footer class="bg-gray-800 text-white p-4 mt-8">
+    @if(session('error'))
+        <div class="bg-red-100 text-red-800 p-4 rounded mb-4">
+            {{ session('error') }}
+        </div>
+    @endif
+
+    <footer class="bg-gray-800 text-white p-6 mt-10">
         <div class="container mx-auto text-center">
             &copy; {{ date('Y') }} ShopLaravel - Tous droits réservés
         </div>
