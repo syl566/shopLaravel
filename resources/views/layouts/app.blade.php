@@ -15,6 +15,7 @@
             <a href="{{ route('products.index') }}" class="ml-4">Produits</a>
             <a href="{{ route('about') }}" class="ml-4">À propos</a>
             <a href="{{ route('contact') }}" class="ml-4">Contact</a>
+
         </nav>
     </header>
     @section('title', 'Accueil - ShopLaravel')

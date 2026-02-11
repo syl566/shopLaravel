@@ -17,12 +17,12 @@
             <p>{{ $article->price }} €</p>
         </li>
         @if($article->stock > 10)
-        <li class="text-green-500">En stock</li>
+            <li class="text-green-500">En stock</li>
         @elseif($article->stock> 0)
-        <li class="text-orange-500">Stock limité</li>
+            <li class="text-orange-500">Stock limité</li>
         @else
-        <li class="text-red-500">Rupture de stock</li>
-         @endif
+            <li class="text-red-500">Rupture de stock</li>
+        @endif
     </ul>
     @endforeach
 </div>

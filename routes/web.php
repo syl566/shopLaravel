@@ -2,10 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/hello', function () {
-    return 'Hello Laravel!';
-});
-
 use App\Http\Controllers\ProductController;
 
 Route::get('/Products/{id}', [ProductController::class, 'show'])
@@ -13,7 +9,6 @@ Route::get('/Products/{id}', [ProductController::class, 'show'])
 
 Route::get('/index', [ProductController::class, 'index'])
     ->name('index');
-
 
 use App\Http\Controllers\PageController;
 

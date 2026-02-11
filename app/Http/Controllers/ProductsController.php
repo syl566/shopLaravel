@@ -7,30 +7,20 @@ use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     */
+
     public function index()
     {
         $articles = Products::all();
         return view('products.index', compact('articles'));
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     */
+
     public function create()
     {
-        return view('products.create');
+        $categories = Products::all();
+        return view('products.create', compact('categories'));
         //
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     */
-    public function store(Request $request)
+       public function store(Request $request)
     {
         // Validation des données
         $validated = $request->validate([
@@ -49,47 +39,34 @@ class ProductsController extends Controller
             'description' => $validated['description'] ?? null,
             'price' => $validated['price'],
             'stock' => $validated['stock'],
-            'active' => $request->has('active'),
+            'active' => $request->has ('active'),
         ]);
+
         return redirect()->route('products.index')
         ->with('success', 'Produit créé avec succès !');
-
     }
 
-    /**
-     * Display the specified resource.
-     *
-     *
-     */
     public function show(string $id)
     {
         $product = Products::findOrFail($id);
         return view('Products',['id' => $id, 'articles' => $product]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     */
     public function edit(Products $product)
     {
         return view('products.edit', compact('product'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, products $product)
     {
-        //
+        return redirect()->route('products.index')
+        ->with('success', 'Produit mis à jour !');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Products $product)
     {
-        //
+       $product->delete(); //On supprime les informations
+        return redirect()->route('products.index')
+            ->with('success', 'Produit supprimé avec succès !');
     }
 }
