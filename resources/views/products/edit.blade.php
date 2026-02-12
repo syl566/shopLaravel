@@ -1,6 +1,5 @@
 <!-- resources/views/products/edit.blade.php -->
 @extends('layouts.app')
-@section('title', 'update')
 @section('content')
 
 <form action="{{ route('products.update', $product) }}" method="POST">
@@ -23,7 +22,7 @@
     <div class="mb-4">
         <label for="description" class="block font-medium mb-1">description</label>
         <input type="text" name="description" id="description" value="{{old('description')}}"
-               class="w-full border rounded px-3 py-2" required>
+               class="w-full border rounded px-3 py-2">
     </div>
     <div class="mb-4">
         <label for="price" class="block font-medium mb-1">Prix :</label>
@@ -43,9 +42,7 @@
     @method('DELETE')
 
     <br>
-    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded">
-        Supprimer
-    </button>
+    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded">supprimer</button>
 </form>
 
 @endsection
