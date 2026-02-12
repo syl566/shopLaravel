@@ -6,8 +6,7 @@
     <h1 class="text-2xl font-bold mb-6">Produit</h1>
     @csrf
     @method('PUT')
-
-    <div class="mb-4">
+          <div class="mb-4">
         <label for="name" class="block font-medium mb-1">Nom</label>
         <!-- La valeur saisie est conservée en cas d'erreur -->
         <input type="text" name="name" id="name" value="{{ old('name',$product->name) }}"

@@ -11,11 +11,11 @@ class ProductsController extends Controller
 
     public function index()
     {
-        $articles = Products::all();
+        $articles = Products::with('category')->get();
         return view('products.index', compact('articles'));
     }
-
     public function create()
+
     {
         $categories = Category::all();
         return view('products.create', compact('categories'));

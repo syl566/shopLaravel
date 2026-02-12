@@ -25,3 +25,7 @@ use App\Http\Controllers\ProductsController;
 
 Route::resource('/products', ProductsController::class);
 
+use App\Http\Controllers\CategoryController;
+
+Route::get('/categories/{id}', [CategoryController::class, 'show'])
+    ->name('categories.show');

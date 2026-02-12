@@ -5,17 +5,16 @@
 <h1 class="text-2xl font-bold mb-4">Nos produits</h1>
 
 <div class="grid grid-cols-3 gap-4">
+
     @foreach ($articles as $article)
     <ul>
+        <li><p>{{ $article->category->name }} </p></li>
         <li>
-            <h2>{{ $article->id }}</h2>
-        </li>
+            <h2>{{ $article->id }}</h2></li>
         <li>
-            <p>{{ $article->name }}</p>
-        </li>
+            <p>{{ $article->name }}</p></li>
         <li>
-            <p>{{ $article->price }} €</p>
-        </li>
+            <p>{{ $article->price }} €</p></li>
         @if($article->stock > 10)
             <li class="text-green-500">En stock</li>
         @elseif($article->stock> 0)

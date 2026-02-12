@@ -3,9 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Products extends Model
 {
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
     protected $fillable = ['category_id','name', 'slug','description','price','stock','active'];
     protected $casts = [
         'price' => 'decimal:2',
@@ -15,9 +20,4 @@ class Products extends Model
         'created_at',
         'updated_at',
     ];
-    //
-    public static function find(string $id)
-    {
-        return self::where('id', $id)->first();
-    }
 }
