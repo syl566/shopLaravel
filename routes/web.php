@@ -25,12 +25,3 @@ use App\Http\Controllers\ProductsController;
 
 Route::resource('/products', ProductsController::class);
 
-use Illuminate\Http\Request;
-
-Route::get('/token', function (Request $request) {
-    $token = $request->session()->token();
-
-    $token = csrf_token();
-
-    // ...
-});

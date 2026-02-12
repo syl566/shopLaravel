@@ -58,8 +58,9 @@ class ProductsController extends Controller
         return view('products.edit', compact('product'));
     }
 
-    public function update(Request $request, products $product)
+    public function update(Products $product)
     {
+        $product->update(request()->all());
         return redirect()->route('products.index')
         ->with('success', 'Produit mis à jour !');
     }
